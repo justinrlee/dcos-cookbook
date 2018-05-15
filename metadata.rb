@@ -4,7 +4,7 @@ maintainer_email 'partnereng@chef.io'
 license          'Apache-2.0'
 description      'Installs/Configures Mesosphere DC/OS'
 long_description 'Installs/Configures Mesosphere DC/OS'
-version          '1.2.3'
+version          '1.2.4'
 
 source_url 'https://github.com/chef-partners/dcos-cookbook' if
   respond_to?(:source_url)
@@ -22,6 +22,6 @@ chef_version '>= 12.1' if
   supports distro
 end
 
-depends 'chef-yum-docker', '~> 3.0'
-depends 'docker', '~> 2.0'
-depends 'selinux', '~> 1.0.4'
+depends 'chef-yum-docker', '~> 3.0.0'
+depends 'docker', '~> 4.2.0'
+depends 'selinux', '~> 2.1.0'
