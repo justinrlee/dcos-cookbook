@@ -40,11 +40,11 @@ default['dcos']['config']['master_list'] = []
 # upstream DNS for MesosDNS
 default['dcos']['config']['resolvers'] = ['8.8.8.8', '8.8.4.4']
 default['dcos']['config']['security'] = 'permissive' if node['dcos']['dcos_enterprise']
-default['dcos']['config']['superuser_username'] = 'dcos' if node['dcos']['dcos_enterprise']
+# default['dcos']['config']['superuser_username'] = 'dcos' if node['dcos']['dcos_enterprise']
 # WARNING: this password is 'dcos', CHANGE IT!
-default['dcos']['config']['superuser_password_hash'] =
-  '$6$rounds=656000$jebZ9.mHzOGexfOq$NEpBlsUot6mGe3ExpfOGioRY02.WEFYlZCIeTDtq7d648FI4oyPt07w8tgNVub0PNVxRT0am9NbWDiYCHYkM9.' \
-  if node['dcos']['dcos_enterprise']
+# default['dcos']['config']['superuser_password_hash'] =
+#   '$6$rounds=656000$jebZ9.mHzOGexfOq$NEpBlsUot6mGe3ExpfOGioRY02.WEFYlZCIeTDtq7d648FI4oyPt07w8tgNVub0PNVxRT0am9NbWDiYCHYkM9.' \
+#   if node['dcos']['dcos_enterprise']
 
 default['dcos']['manage_docker'] = true
 default['dcos']['docker_storage_driver'] = 'overlay'
