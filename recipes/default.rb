@@ -36,6 +36,7 @@ package %w(
   tar
   unzip
   xz
+  net-tools
 )
 
 group 'nogroup'
