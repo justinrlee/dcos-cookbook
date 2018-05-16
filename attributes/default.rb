@@ -61,4 +61,5 @@ default['dcos']['leader_check_retries'] = 120
 default['dcos']['ip-detect'] = 'eth0'
 
 default['dcos']['fault-domain-detect'] = 'online'
+# To use a custom fault-domain-detect script, specify something like the below in your attributes:
 # default['dcos']['fault-domain-detect'] = {'region': 'cat /etc/hostname | head -c4', 'zone': 'cat /etc/hostname'}

@@ -57,6 +57,7 @@ directory '/usr/src/dcos/genconf' do
   recursive true
 end
 
+# All local files should be generated / created prior to downloading DC/OS.
 # Only used on DC/OS Enterprise 1.11+
 file '/usr/src/dcos/genconf/license.txt' do
   content node['dcos']['dcos_license_text']
@@ -70,27 +71,22 @@ template '/usr/src/dcos/genconf/config.yaml' do
 end
 
 # Only supported on DC/OS Enterprise 1.11+
-remote_file '/usr/src/dcos/genconf/fault-domain-detect' do
-  # Pull latest from GitHub
-  source 'https://raw.githubusercontent.com/dcos/dcos/master/gen/fault-domain-detect/cloud.sh'
-  mode '0755'
-  only_if { dcos_enterprise? && node['dcos']['dcos_version'].to_f >= 1.11 }
-  not_if { node['dcos']['config'].key?('platform') && node['dcos']['config']['platform'] == 'onprem' }
-end
+include_recipe 'dcos::_fault_domain_detect' if dcos_enterprise? && node['dcos']['dcos_version'].to_f >= 1.11
+
+# generate the genconf/ip-detect script
+include_recipe 'dcos::_ip-detect'
 
 remote_file '/usr/src/dcos/dcos_generate_config.sh' do
   source dcos_generate_config_url
   mode '0755'
 end
 
-# generate the genconf/ip-detect script
-include_recipe 'dcos::_ip-detect'
-
+# Need better logic to determine when to run / not run this.
 execute 'dcos-genconf' do
   command '/usr/src/dcos/dcos_generate_config.sh --genconf'
   user 'root'
   cwd '/usr/src/dcos'
-  creates '/usr/src/dcos/genconf/cluster_packages.json'
+  # creates '/usr/src/dcos/genconf/cluster_packages.json' # Breaks upgrades
 end
 
 file '/usr/src/dcos/genconf/serve/dcos_install.sh' do
