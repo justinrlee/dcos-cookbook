@@ -33,7 +33,8 @@ default['dcos']['dcos_license_text'] = nil
 default['dcos']['config']['bootstrap_url'] = 'file:///usr/src/dcos/genconf/serve'
 default['dcos']['config']['cluster_name'] = 'DCOS'
 default['dcos']['config']['exhibitor_storage_backend'] = 'static'
-default['dcos']['config']['ip_detect_public_filename'] = 'genconf/ip-detect-public'
+# Don't need to explicitly specify this, and it will error out if it's specified and not present.
+# default['dcos']['config']['ip_detect_public_filename'] = 'genconf/ip-detect-public'
 default['dcos']['config']['master_discovery'] = 'static'
 # ipv4 only, must be odd number 1-9
 default['dcos']['config']['master_list'] = []
@@ -60,6 +61,7 @@ default['dcos']['leader_check_retries'] = 120
 # with node['network']['interface'][VALUE]
 default['dcos']['ip-detect'] = 'eth0'
 
+default['dcos']['ip-detect-public'] = 'online'
 default['dcos']['fault-domain-detect'] = 'online'
 # To use a custom fault-domain-detect script, specify something like the below in your attributes:
 # default['dcos']['fault-domain-detect'] = {'region': 'cat /etc/hostname | head -c4', 'zone': 'cat /etc/hostname'}

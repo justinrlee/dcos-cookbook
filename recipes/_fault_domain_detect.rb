@@ -8,7 +8,6 @@
 
 # Default is 'online'; if not 'online, it is assumed that the user has specified two keys'
 if node['dcos']['fault-domain-detect'] == 'online'
-
   remote_file '/usr/src/dcos/genconf/fault-domain-detect' do
     # Pull latest from GitHub
     source 'https://raw.githubusercontent.com/dcos/dcos/master/gen/fault-domain-detect/cloud.sh'

@@ -37,8 +37,10 @@ else
     mode '0755'
     variables(interface: interface)
   end
-  cookbook_file '/usr/src/dcos/genconf/ip-detect-public' do
-    source 'ip-detect-public'
-    mode '0755'
+  if node['dcos']['ip-detect-public'] == 'online'
+    cookbook_file '/usr/src/dcos/genconf/ip-detect-public' do
+      source 'ip-detect-public'
+      mode '0755'
+    end
   end
 end
