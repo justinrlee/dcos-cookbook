@@ -1,0 +1,4 @@
+#!/bin/bash
+REGION=$(<%= @region %>)
+ZONE=$(<%= @zone %>)
+echo "{\"fault_domain\":{\"region\":{\"name\": \"${REGION}\"},\"zone\":{\"name\": \"${ZONE}\"}}}"

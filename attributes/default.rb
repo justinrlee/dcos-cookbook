@@ -40,6 +40,7 @@ default['dcos']['config']['master_list'] = []
 # upstream DNS for MesosDNS
 default['dcos']['config']['resolvers'] = ['8.8.8.8', '8.8.4.4']
 default['dcos']['config']['security'] = 'permissive' if node['dcos']['dcos_enterprise']
+# If not specified, will result in a default user with bootstrapuser/deleteme
 # default['dcos']['config']['superuser_username'] = 'dcos' if node['dcos']['dcos_enterprise']
 # WARNING: this password is 'dcos', CHANGE IT!
 # default['dcos']['config']['superuser_password_hash'] =
@@ -58,3 +59,6 @@ default['dcos']['leader_check_retries'] = 120
 # otherwise use 'eth0', 'eth1', etc. and it will get the ipaddress associated
 # with node['network']['interface'][VALUE]
 default['dcos']['ip-detect'] = 'eth0'
+
+default['dcos']['fault-domain-detect'] = 'online'
+# default['dcos']['fault-domain-detect'] = {'region': 'cat /etc/hostname | head -c4', 'zone': 'cat /etc/hostname'}
