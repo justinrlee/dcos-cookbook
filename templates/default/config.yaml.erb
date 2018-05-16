@@ -11,10 +11,10 @@
     <% end %>
   <% end %>
 <% end %>
-<% unless @config['rexray'].nil? || @config['rexray'].empty? %>
+<% unless @config['rexray_config'].nil? || @config['rexray_config'].empty? %>
   <% require 'yaml' %>
-rexray:
-  <%- @config['rexray'].to_hash.dup.to_yaml.lines.drop(1).each do |l| %>
+rexray_config:
+  <%- @config['rexray_config'].to_hash.dup.to_yaml.lines.drop(1).each do |l| %>
   <%= l.chomp %>
   <% end %>
 <% end %>
