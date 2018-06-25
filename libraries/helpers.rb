@@ -33,6 +33,7 @@ module Dcos
     def dcos_base_url
       case node['dcos']['dcos_version']
       when
+        '1.11.2',
         '1.11.1',
         '1.11.0',
         '1.10.6',
